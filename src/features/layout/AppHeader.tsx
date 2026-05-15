@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { appImages } from '@/assets/images'
 import { appCopy } from '../../content/appCopy'
 
 export function AppHeader() {
@@ -9,7 +10,7 @@ export function AppHeader() {
           to="/bkai"
           className="flex min-w-0 items-center gap-2 rounded-md outline-offset-2 focus-visible:outline-2 focus-visible:outline-slate-400"
         >
-          <img src="/assets/logo-full.svg" alt="" className="shrink-0" />
+          <img src={appImages.logoFull} alt="" className="shrink-0" />
         </Link>
         <div className="flex shrink-0 items-center gap-2.5 sm:gap-3">
           <a

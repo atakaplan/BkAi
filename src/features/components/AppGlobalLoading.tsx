@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react'
+import { appImages } from '@/assets/images'
 import { appCopy } from '../../content/appCopy'
 
 /** Opacity geçişi ~450ms; kare değişimi biraz daha seyrek → daha yumuşak döngü. */
 const FRAME_CYCLE_MS = 520
 
-const LOADING_FRAME_SRCS = [
-  '/assets/loading/loading1.png',
-  '/assets/loading/loading2.png',
-  '/assets/loading/loading3.png',
-  '/assets/loading/loading4.png',
-] as const
+const LOADING_FRAME_SRCS = appImages.loadingFrames
 
 function readPrefersReducedMotion() {
   if (typeof window === 'undefined') return false

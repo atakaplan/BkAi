@@ -11,8 +11,8 @@
   --app-workspace-border: #e5e5e5;
   --app-shell-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.65);
 
-  /* Ortak asset (kart üst deseni + soru modu şeridi) */
-  --app-asset-card-pattern: url('/assets/card-pattern.svg');
+  /* Ortak asset (kart üst deseni + soru modu şeridi) — src/assets, Vite url() */
+  --app-asset-card-pattern: url('./assets/images/card-pattern.svg');
 
   /* Özellik kartı */
   --app-card-radius: 24px;

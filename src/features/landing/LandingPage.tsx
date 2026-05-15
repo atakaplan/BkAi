@@ -1,7 +1,6 @@
+import { appImages } from '@/assets/images'
 import { LandingHero } from './components/LandingHero'
 import { LandingFeatureCards } from './components/LandingFeatureCards'
-
-const FLOOR_BG = '/assets/landing-floor.png'
 
 export function LandingPage() {
   return (
@@ -13,7 +12,7 @@ export function LandingPage() {
 
       <div className="app-landing-floor mt-auto" aria-hidden>
         <div className="app-landing-floor__blend" />
-        <img src={FLOOR_BG} alt="" className="app-landing-floor__img" />
+        <img src={appImages.landingFloor} alt="" className="app-landing-floor__img" />
       </div>
     </div>
   )
