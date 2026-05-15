@@ -23,9 +23,9 @@ export function SelectedTestsPanel({ test, selectedQuestionCount }: Props) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex min-h-[9.5rem] w-full overflow-hidden rounded-2xl border border-[#E5E5E5] shadow-sm">
+      <div className="flex min-h-38 w-full overflow-hidden rounded-2xl border border-[#E5E5E5] shadow-sm">
         {/* Sol — ders / rozetler */}
-        <div className="relative flex w-[46%] shrink-0 flex-col justify-between overflow-hidden bg-gradient-to-br from-sky-100 via-sky-50 to-indigo-100 px-3 py-3 sm:w-[42%] sm:px-4 sm:py-4">
+        <div className="relative flex w-[46%] shrink-0 flex-col justify-between overflow-hidden bg-linear-to-br from-sky-100 via-sky-50 to-indigo-100 px-3 py-3 sm:w-[42%] sm:px-4 sm:py-4">
           <div
             className="pointer-events-none absolute inset-x-0 top-0 h-16 opacity-50"
             style={{

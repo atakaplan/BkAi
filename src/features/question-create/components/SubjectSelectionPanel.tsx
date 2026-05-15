@@ -28,7 +28,7 @@ export function SubjectSelectionPanel({ value, onChange }: Props) {
             <select
               value={value[key]}
               onChange={(e) => onChange(key, e.target.value)}
-              className="w-full appearance-none rounded-lg border border-[#E5E5E5] bg-white px-3 py-2.5 pr-10 text-slate-800 outline-none transition hover:border-[#d0d0d0] focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
+              className="w-full cursor-pointer appearance-none rounded-lg border border-[#E5E5E5] bg-white px-3 py-2.5 pr-10 text-slate-800 outline-none transition hover:border-[#d0d0d0] focus:border-sky-400 focus:ring-2 focus:ring-sky-100"
             >
               <option value="" disabled>
                 {ph}

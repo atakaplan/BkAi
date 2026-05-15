@@ -17,11 +17,11 @@ export function MetodboxTestsPanel({ cards, selectedId, onSelect }: Props) {
             key={card.id}
             type="button"
             onClick={() => onSelect(card.id)}
-            className={`flex min-h-[7.5rem] w-full overflow-hidden rounded-xl border text-left transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c] ${
-              on ? 'border-[#004a7c] ring-2 ring-[#004a7c]/25' : 'border-[#E5E5E5] hover:border-[#c8c8c8]'
+            className={`flex min-h-30 w-full overflow-hidden rounded-xl border text-left transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c] ${
+              on ? 'border-[#004a7c] ring-2 ring-[#004a7c]/25' : 'border-[#E5E5E5] hover:border-[#c8c8c8] cursor-pointer'
             }`}
           >
-            <div className="relative flex w-[42%] shrink-0 flex-col justify-between bg-gradient-to-br from-sky-100 via-sky-50 to-indigo-50 px-2.5 py-2.5 sm:px-3 sm:py-3">
+            <div className="relative flex w-[42%] shrink-0 flex-col justify-between bg-linear-to-br from-sky-100 via-sky-50 to-indigo-50 px-2.5 py-2.5 sm:px-3 sm:py-3">
               <span className="absolute right-1.5 top-1.5 flex h-5 w-5 items-center justify-center rounded bg-white/90 text-[9px] font-bold text-red-600 shadow-sm">
                 M
               </span>

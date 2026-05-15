@@ -23,7 +23,7 @@ export function QuestionModeSidebar({ selected, onSelect, onOpenCreatedList }: P
               className={`group flex w-full items-start gap-3 rounded-xl border border-[#E5E5E5] bg-white p-3 text-left transition sm:p-3.5 ${
                 isOn
                   ? 'border-sky-300 bg-[#eef6ff] shadow-sm ring-1 ring-sky-100'
-                  : 'hover:border-[#d0d0d0] hover:bg-[#F4F7FB]'
+                  : 'hover:border-[#d0d0d0] hover:bg-[#F4F7FB] cursor-pointer'
               }`}
             >
               <span
@@ -61,7 +61,7 @@ export function QuestionModeSidebar({ selected, onSelect, onOpenCreatedList }: P
         <button
           type="button"
           onClick={onOpenCreatedList}
-          className="flex w-full items-center justify-between rounded-xl border border-dashed border-[#E5E5E5] bg-[#F4F7FB] px-3 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-[#d0d0d0] hover:bg-[#eaf0f8] sm:py-3.5"
+          className="flex w-full cursor-pointer items-center justify-between rounded-xl border border-dashed border-[#E5E5E5] bg-[#F4F7FB] px-3 py-3 text-left text-sm font-semibold text-slate-800 transition hover:border-[#d0d0d0] hover:bg-[#eaf0f8] sm:py-3.5"
         >
           {appCopy.questionCreate.sidebarCreatedShortcut}
           <Icon icon="mdi:chevron-right" className="text-xl text-slate-400" aria-hidden />

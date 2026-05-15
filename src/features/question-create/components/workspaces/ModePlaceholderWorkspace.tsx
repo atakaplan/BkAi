@@ -6,7 +6,7 @@ import type { QuestionCreateWorkspaceProps } from './questionCreateWorkspaceProp
 
 type ModeId = Exclude<QuestionCreationModeId, 'metodbox'>
 
-type Props = QuestionCreateWorkspaceProps & {
+type Props = Pick<QuestionCreateWorkspaceProps, 'onPrimaryActionReadyChange'> & {
   modeId: ModeId
 }
 

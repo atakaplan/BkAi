@@ -8,6 +8,18 @@ export const appCopy = {
   heroSubtitle:
     'BkAi ile soru oluşturun, ders planı hazırlayın, ödev ve etüt gönderin, öğrenci performansını analiz edin hepsi tek platformda.',
   introVideo: 'BkAi Tanıtım Videosu',
+  introVideoPage: {
+    close: 'Kapat',
+    posterLine1: 'Bahçeşehir Koleji',
+    posterLine2: 'Yapay Zeka Uygulamaları İle',
+    posterLine3: 'Eğitimde Paradigmalar Değişiyor',
+    durationMock: '47:38 / 1:52:32',
+    soonHint: 'Video kaynağı henüz bağlanmadı — önizleme arayüzü.',
+    navAriaLabel: 'Tanıtım videosu alt menü',
+    introVideoBkaiTools: 'BKAi Araçları',
+    introVideoAuxiliaryTools: 'Yardımcı Araçlar',
+    teacher: 'ÖĞRETMEN',
+  },
   comingSoon: 'Yakında',
   notFound: {
     code: '404',

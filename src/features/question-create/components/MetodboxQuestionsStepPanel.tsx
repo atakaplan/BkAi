@@ -58,7 +58,7 @@ function ReadOnlyDifficultyStep({
         >
           <Icon icon="mdi:minus" className="text-lg" />
         </span>
-        <span className="min-w-[2rem] text-center text-sm font-bold tabular-nums text-slate-900">{value}</span>
+        <span className="min-w-8 text-center text-sm font-bold tabular-nums text-slate-900">{value}</span>
         <span
           className="pointer-events-none flex h-8 w-8 items-center justify-center rounded-lg border border-[#E5E5E5] bg-[#F4F7FB] text-slate-400 opacity-60"
           aria-hidden
@@ -115,7 +115,7 @@ export function MetodboxQuestionsStepPanel({
                       type="button"
                       onClick={() => onActiveIndexChange(i)}
                       className={`flex w-full items-center justify-between gap-2 rounded-lg px-2.5 py-2 text-left text-sm font-medium transition ${
-                        on ? 'bg-sky-100 text-sky-950' : 'text-slate-700 hover:bg-slate-50'
+                        on ? 'bg-sky-100 text-sky-950' : 'text-slate-700 hover:bg-slate-50 cursor-pointer'
                       }`}
                     >
                       <span className="min-w-0 truncate">{q.listLabel}</span>
@@ -145,7 +145,7 @@ export function MetodboxQuestionsStepPanel({
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs font-medium text-slate-600">{t.dogruCevap}:</span>
-                  <span className="inline-flex h-7 min-w-[1.75rem] items-center justify-center rounded-full bg-emerald-100 px-2 text-sm font-bold text-emerald-900">
+                  <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-emerald-100 px-2 text-sm font-bold text-emerald-900">
                     {question.correctOption}
                   </span>
                 </div>
@@ -156,7 +156,7 @@ export function MetodboxQuestionsStepPanel({
                     type="button"
                     onClick={() => setPreviewTab('soru')}
                     className={`rounded-md px-3 py-1.5 text-xs font-semibold transition sm:text-sm ${
-                      previewTab === 'soru' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600'
+                      previewTab === 'soru' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 cursor-pointer'
                     }`}
                   >
                     {t.tabSoru}
@@ -165,7 +165,7 @@ export function MetodboxQuestionsStepPanel({
                     type="button"
                     onClick={() => setPreviewTab('video')}
                     className={`rounded-md px-3 py-1.5 text-xs font-semibold transition sm:text-sm ${
-                      previewTab === 'video' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600'
+                      previewTab === 'video' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 cursor-pointer'
                     }`}
                   >
                     {t.tabCozum}
@@ -195,7 +195,7 @@ export function MetodboxQuestionsStepPanel({
             {previewTab === 'soru' ? (
               <div className="mt-4 flex min-h-0 flex-1 flex-col gap-4">
                 <div
-                  className="flex min-h-[12rem] flex-col items-center justify-center rounded-lg border border-dashed border-[#E5E5E5] bg-[#F4F7FB] px-4 py-8 text-center transition-[transform] duration-200"
+                  className="flex min-h-48 flex-col items-center justify-center rounded-lg border border-dashed border-[#E5E5E5] bg-[#F4F7FB] px-4 py-8 text-center transition-[transform] duration-200"
                   style={{ transform: `scale(${zoom / 100})`, transformOrigin: 'top center' }}
                 >
                   <Icon icon="mdi:image-filter-hdr" className="mb-2 text-4xl text-slate-400" aria-hidden />
@@ -217,7 +217,7 @@ export function MetodboxQuestionsStepPanel({
                 </div>
               </div>
             ) : (
-              <div className="mt-4 flex min-h-[12rem] items-center justify-center rounded-lg border border-dashed border-[#E5E5E5] bg-slate-50 px-4 py-8 text-center text-sm text-slate-600">
+              <div className="mt-4 flex min-h-48 items-center justify-center rounded-lg border border-dashed border-[#E5E5E5] bg-slate-50 px-4 py-8 text-center text-sm text-slate-600">
                 Çözüm videosu oynatıcısı burada yer alacak.
               </div>
             )}
@@ -226,7 +226,7 @@ export function MetodboxQuestionsStepPanel({
               <button
                 type="button"
                 onClick={() => onToggleChosen(question.id)}
-                className={`rounded-full px-5 py-2 text-sm font-semibold shadow-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c] ${
+                className={`rounded-full cursor-pointer px-5 py-2 text-sm font-semibold shadow-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c] ${
                   isChosen
                     ? 'border border-sky-200 bg-sky-50 text-[#004a7c] hover:bg-sky-100'
                     : 'border border-[#004a7c] bg-[#004a7c] text-white hover:bg-[#003d68]'

@@ -51,7 +51,7 @@ export function QuestionCreateSubTabs({ active, onChange }: Props) {
                   ? 'relative z-1 -mb-px shrink-0 cursor-not-allowed px-3 py-2 text-left text-xs font-medium text-zinc-400 sm:px-4 sm:py-2.5 sm:text-sm'
                   : isOn
                     ? 'qc-folder-tab qc-folder-tab--sm -mb-px shrink-0 px-3 py-2 text-left text-xs font-bold text-zinc-900 shadow-[0_1px_3px_rgba(15,23,42,0.06)] sm:px-4 sm:py-2.5 sm:text-sm'
-                    : 'relative z-1 -mb-px shrink-0 px-3 py-2 text-left text-xs font-medium text-zinc-500 transition hover:text-zinc-800 sm:px-4 sm:py-2.5 sm:text-sm'
+                    : 'relative z-1 -mb-px shrink-0 px-3 py-2 text-left text-xs font-medium text-zinc-500 transition hover:text-zinc-800 sm:px-4 sm:py-2.5 sm:text-sm cursor-pointer'
               }
             >
               {labels[id]}

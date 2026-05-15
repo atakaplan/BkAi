@@ -56,7 +56,7 @@ export function QrModal({
             type="button"
             onClick={onSearch}
             disabled={isSearching}
-            className="shrink-0 rounded-full bg-[#004a7c] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#003d68] disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c] sm:px-6"
+            className="shrink-0 cursor-pointer rounded-full bg-[#004a7c] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#003d68] disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c] sm:px-6"
           >
             {searchLabel}
           </button>

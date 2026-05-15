@@ -82,7 +82,7 @@ export function ModalFrame({
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400"
+          className="absolute right-3 top-3 z-10 cursor-pointer flex h-9 w-9 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400"
           aria-label="Kapat"
         >
           <Icon icon="mdi:close" className="text-xl" aria-hidden />

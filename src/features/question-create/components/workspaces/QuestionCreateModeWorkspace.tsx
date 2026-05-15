@@ -11,13 +11,34 @@ type Props = QuestionCreateWorkspaceProps & {
  * Sol sidebar’daki soru üretim moduna göre ana içerik.
  * Yeni mod: burada `case` + ayrı workspace bileşeni ekleyin.
  */
-export function QuestionCreateModeWorkspace({ mode, onPrimaryActionReadyChange }: Props) {
+export function QuestionCreateModeWorkspace({
+  mode,
+  onPrimaryActionReadyChange,
+  openStep,
+  onOpenStepChange,
+}: Props) {
   switch (mode) {
     case 'metodbox':
-      return <MetodboxQuestionCreateWorkspace onPrimaryActionReadyChange={onPrimaryActionReadyChange} />
+      return (
+        <MetodboxQuestionCreateWorkspace
+          onPrimaryActionReadyChange={onPrimaryActionReadyChange}
+          openStep={openStep}
+          onOpenStepChange={onOpenStepChange}
+        />
+      )
     case 'tymm':
-      return <ModePlaceholderWorkspace modeId="tymm" onPrimaryActionReadyChange={onPrimaryActionReadyChange} />
+      return (
+        <ModePlaceholderWorkspace
+          modeId="tymm"
+          onPrimaryActionReadyChange={onPrimaryActionReadyChange}
+        />
+      )
     case 'ai':
-      return <ModePlaceholderWorkspace modeId="ai" onPrimaryActionReadyChange={onPrimaryActionReadyChange} />
+      return (
+        <ModePlaceholderWorkspace
+          modeId="ai"
+          onPrimaryActionReadyChange={onPrimaryActionReadyChange}
+        />
+      )
   }
 }

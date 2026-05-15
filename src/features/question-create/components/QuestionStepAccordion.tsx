@@ -49,7 +49,7 @@ export function QuestionStepAccordion({
           <button
             type="button"
             disabled={collapseBlocked}
-            className="flex min-w-0 flex-1 flex-wrap items-center gap-2 gap-y-2 text-left disabled:cursor-not-allowed disabled:opacity-60"
+            className="flex min-w-0 flex-1 cursor-pointer flex-wrap items-center gap-2 gap-y-2 text-left disabled:cursor-not-allowed disabled:opacity-60"
             onClick={onToggle}
             aria-expanded={isOpen}
           >
@@ -74,7 +74,7 @@ export function QuestionStepAccordion({
             <button
               type="button"
               disabled={collapseBlocked}
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-600 transition hover:bg-white/60 disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition hover:bg-white/60 disabled:cursor-not-allowed disabled:opacity-50"
               onClick={onToggle}
               aria-label={isOpen ? 'Adımı kapat' : 'Adımı aç'}
             >
@@ -102,7 +102,7 @@ export function QuestionStepAccordion({
           <button
             type="button"
             disabled={collapseBlocked}
-            className="flex min-w-0 flex-1 items-start gap-2 text-left disabled:cursor-not-allowed disabled:opacity-60 sm:items-center sm:gap-3"
+            className="flex min-w-0 flex-1 cursor-pointer items-start gap-2 text-left disabled:cursor-not-allowed disabled:opacity-60 sm:items-center sm:gap-3"
             onClick={onToggle}
             aria-expanded={isOpen}
           >
@@ -137,7 +137,7 @@ export function QuestionStepAccordion({
           <button
             type="button"
             disabled={collapseBlocked}
-            className="ml-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-transparent text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+            className="ml-auto cursor-pointer flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-transparent text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
             onClick={onToggle}
             aria-label={isOpen ? 'Adımı kapat' : 'Adımı aç'}
           >
@@ -164,7 +164,7 @@ export function QuestionStepAccordion({
         <>
           <div className="border-t border-[#E5E5E5] bg-[#F4F7FB] px-3 py-4 sm:px-4">{children}</div>
           {footer ? (
-            <div className="border-t border-[#E5E5E5] bg-white px-3 py-3 sm:px-4 sm:py-4">{footer}</div>
+            <div className="bg-[#F4F7FB] px-3 py-3 sm:px-4 sm:py-4">{footer}</div>
           ) : null}
         </>
       ) : null}

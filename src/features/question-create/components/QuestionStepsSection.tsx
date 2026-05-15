@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Icon } from '@iconify/react'
 import { appCopy } from '../../../content/appCopy'
 import { QrModal } from '../../components/modals'
+import { useQuestionCreateDraft } from '../persistence/useQuestionCreateDraft'
 import { MetodboxQuestionsStepPanel } from './MetodboxQuestionsStepPanel'
 import { getDifficultyCountsFromChosenIds, isStep3ProceedEnabled } from '../data/metodboxQuestionsStep.mock'
 import { MetodboxTestsPanel } from './MetodboxTestsPanel'
@@ -10,7 +11,6 @@ import { SelectedTestsPanel } from './SelectedTestsPanel'
 import { SubjectSelectionPanel } from './SubjectSelectionPanel'
 import { METODOBOX_TEST_CARDS } from '../data/metodboxTests.mock'
 import {
-  EMPTY_SUBJECT_SELECTION,
   getSubjectSelectionSummaryLabels,
   isSubjectSelectionComplete,
   type SubjectFieldKey,
@@ -18,23 +18,28 @@ import {
 
 type Props = {
   onStepsOneTwoThreeCompleteChange?: (complete: boolean) => void
+  openStep: number | null
+  onOpenStepChange: (step: number | null) => void
 }
 
-export function QuestionStepsSection({ onStepsOneTwoThreeCompleteChange }: Props) {
+export function QuestionStepsSection({
+  onStepsOneTwoThreeCompleteChange,
+  openStep,
+  onOpenStepChange,
+}: Props) {
   const s = appCopy.questionCreate
   const qc = s
 
-  const [openStep, setOpenStep] = useState<number | null>(1)
-  const [completed, setCompleted] = useState<Record<number, boolean>>({
-    1: false,
-    2: false,
-    3: false,
-  })
+  const {
+    draft,
+    setSubjectField,
+    setTestId,
+    setCompleted,
+    setStep3ActiveIndex,
+    setStep3ChosenIds,
+  } = useQuestionCreateDraft('metodbox')
 
-  const [subject, setSubject] = useState(EMPTY_SUBJECT_SELECTION)
-  const [testId, setTestId] = useState<string | null>(null)
-  const [step3ActiveIndex, setStep3ActiveIndex] = useState(0)
-  const [step3ChosenIds, setStep3ChosenIds] = useState<string[]>([])
+  const { subject, testId, completed, step3ChosenIds, step3ActiveIndex } = draft
 
   const [qrModalOpen, setQrModalOpen] = useState(false)
   const [qrQuery, setQrQuery] = useState('')
@@ -44,16 +49,27 @@ export function QuestionStepsSection({ onStepsOneTwoThreeCompleteChange }: Props
     onStepsOneTwoThreeCompleteChange?.(done)
   }, [completed, onStepsOneTwoThreeCompleteChange])
 
+  const isStepCompleted = (n: 1 | 2 | 3) => completed[n]
+
   const canAccess = (n: number) => {
     if (n === 1) return true
-    return Boolean(completed[n - 1])
+    if (n === 2) return completed[1]
+    if (n === 3) return completed[2]
+    if (n === 4) return completed[3]
+    return false
   }
 
-  const isLocked = (n: number) => !canAccess(n) && !completed[n]
+  const isLocked = (n: number) => {
+    if (n === 1) return false
+    if (n === 2) return !canAccess(2) && !isStepCompleted(1)
+    if (n === 3) return !canAccess(3) && !isStepCompleted(2)
+    if (n === 4) return !canAccess(4) && !isStepCompleted(3)
+    return false
+  }
 
   const toggleStep = (n: number) => {
     if (isLocked(n)) return
-    setOpenStep((prev) => (prev === n ? null : n))
+    onOpenStepChange(openStep === n ? null : n)
   }
 
   const stepBadge = (n: number) => `${n}. Adım`
@@ -62,11 +78,13 @@ export function QuestionStepsSection({ onStepsOneTwoThreeCompleteChange }: Props
     if (n === 1 && !isSubjectSelectionComplete(subject)) return
     if (n === 2 && !testId) return
     if (n === 3 && !isStep3ProceedEnabled(step3ChosenIds)) return
-    setCompleted((c) => ({ ...c, [n]: true }))
+    if (n === 1) setCompleted((c) => ({ ...c, 1: true }))
+    else if (n === 2) setCompleted((c) => ({ ...c, 2: true }))
+    else if (n === 3) setCompleted((c) => ({ ...c, 3: true }))
     if (n === 3) {
-      setOpenStep(4)
+      onOpenStepChange(4)
     } else {
-      setOpenStep(n + 1)
+      onOpenStepChange(n + 1)
     }
   }
 
@@ -76,7 +94,7 @@ export function QuestionStepsSection({ onStepsOneTwoThreeCompleteChange }: Props
         type="button"
         disabled={!enabled}
         onClick={() => proceed(n)}
-        className="inline-flex items-center gap-2 rounded-lg bg-[#004a7c] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#003d68] disabled:cursor-not-allowed disabled:opacity-45 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c]"
+        className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-[#004a7c] px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#003d68] disabled:cursor-not-allowed disabled:opacity-45 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c]"
       >
         {qc.stepProceed}
       </button>
@@ -84,7 +102,7 @@ export function QuestionStepsSection({ onStepsOneTwoThreeCompleteChange }: Props
   )
 
   const onSubjectChange = (key: SubjectFieldKey, value: string) => {
-    setSubject((prev) => ({ ...prev, [key]: value }))
+    setSubjectField(key, value)
   }
 
   const step1SummaryChips = useMemo(() => getSubjectSelectionSummaryLabels(subject), [subject])
@@ -117,7 +135,7 @@ export function QuestionStepsSection({ onStepsOneTwoThreeCompleteChange }: Props
           <button
             type="button"
             onClick={() => setQrModalOpen(true)}
-            className="inline-flex items-center gap-2 rounded-lg border border-transparent bg-[#004a7c] px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-[#003d68] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c] sm:text-sm"
+            className="cursor-pointer inline-flex items-center gap-2 rounded-lg border border-transparent bg-[#004a7c] px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-[#003d68] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c] sm:text-sm"
           >
             <Icon icon="mdi:qrcode-scan" className="text-base shrink-0" aria-hidden />
             {s.steps.topic.actionQr}

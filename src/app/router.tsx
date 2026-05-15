@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { AppShell } from '../features/layout/AppShell'
-import { LazyLandingPage, LazyNotFoundPage, LazyQuestionCreatePage } from './lazyRoutePages'
+import { LazyIntroVideoPage, LazyLandingPage, LazyNotFoundPage, LazyQuestionCreatePage } from './lazyRoutePages'
 
 /** Vite `base` ile uyumlu (`/BkAi` prod, dev’de yok). */
 function routerBasename() {
@@ -12,20 +12,22 @@ function routerBasename() {
 export const appRouter = createBrowserRouter(
   [
     {
-      path: '/bkai',
       element: <AppShell />,
       children: [
-        { index: true, element: <LazyLandingPage /> },
-        { path: 'soru-olustur', element: <LazyQuestionCreatePage /> },
+        {
+          path: 'bkai',
+          children: [
+            { index: true, element: <LazyLandingPage /> },
+            { path: 'tanitim-videosu', element: <LazyIntroVideoPage /> },
+            { path: 'soru-olustur', element: <LazyQuestionCreatePage /> },
+            { path: '*', element: <LazyNotFoundPage /> },
+          ],
+        },
+        { index: true, element: <Navigate to="/bkai" replace /> },
+        { path: 'soru-olustur', element: <Navigate to="/bkai/soru-olustur" replace /> },
+        /** /bkai212 gibi /bkai altında olmayan tüm yollar */
         { path: '*', element: <LazyNotFoundPage /> },
       ],
-    },
-    { path: '/', element: <Navigate to="/bkai" replace /> },
-    { path: '/soru-olustur', element: <Navigate to="/bkai/soru-olustur" replace /> },
-    {
-      path: '*',
-      element: <AppShell />,
-      children: [{ index: true, element: <LazyNotFoundPage /> }],
     },
   ],
   { basename: routerBasename() },
