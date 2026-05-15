@@ -1,0 +1,261 @@
+/**
+ * Uygulama tasarım token’ları ve tekrarlayan stiller.
+ */
+
+:root {
+  /* Layout */
+  --app-header-height: 64px;
+  --app-layout-main-bg: #f4f7fb;
+  /* Soru oluştur çalışma alanı (Figma) */
+  --app-workspace-surface: #f4f7fb;
+  --app-workspace-border: #e5e5e5;
+  --app-shell-inner-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+  /* Ortak asset (kart üst deseni + soru modu şeridi) */
+  --app-asset-card-pattern: url('/assets/card-pattern.svg');
+
+  /* Özellik kartı */
+  --app-card-radius: 24px;
+  --app-card-shadow-drop: 0px 3px 6px 0px #dddedf1f;
+  --app-card-shadow-inset: inset 0px -4px 0px 0px #dddedf;
+  --app-card-shadow: var(--app-card-shadow-drop), var(--app-card-shadow-inset);
+  --app-card-shadow-hover-drop: 0px 8px 18px -2px rgba(221, 222, 223, 0.55);
+  --app-card-shadow-hover-glow: 0 0 26px 0 rgba(255, 255, 255, 0.75);
+  --app-card-shadow-hover: var(--app-card-shadow-hover-drop), var(--app-card-shadow-inset),
+    var(--app-card-shadow-hover-glow);
+  --app-card-shadow-active-drop: 0px 2px 5px 0px #dddedf26;
+  --app-card-shadow-active: var(--app-card-shadow-active-drop), var(--app-card-shadow-inset);
+  --app-card-pattern-mask: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 38%,
+    rgba(0, 0, 0, 0.55) 62%,
+    transparent 88%
+  );
+}
+
+.app-shell-header {
+  height: var(--app-header-height);
+  min-height: var(--app-header-height);
+}
+
+.app-shell-main-padding {
+  padding-top: var(--app-header-height);
+}
+
+.app-shell-content {
+  background-color: var(--app-layout-main-bg);
+  box-shadow: var(--app-shell-inner-highlight);
+}
+
+/* Landing — perspektif zemin */
+.app-landing-floor {
+  position: relative;
+  z-index: 0;
+  margin-top: -4.5rem;
+  width: 100%;
+  flex-shrink: 0;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+@media (min-width: 640px) {
+  .app-landing-floor {
+    margin-top: -5.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-landing-floor {
+    margin-top: -6.5rem;
+  }
+}
+
+.app-landing-floor__blend {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  height: min(5.5rem, 22vw);
+  background: linear-gradient(
+    to bottom,
+    var(--app-layout-main-bg) 0%,
+    rgba(244, 247, 251, 0.45) 50%,
+    transparent 100%
+  );
+}
+
+.app-landing-floor__img {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+/* Özellik kartı kabuğu */
+.app-feature-card-shell {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--app-card-radius);
+  background-color: #fff;
+  box-shadow: var(--app-card-shadow);
+  transition:
+    box-shadow 200ms ease-out,
+    transform 200ms ease-out;
+}
+
+.app-feature-card-shell--interactive {
+  cursor: pointer;
+}
+
+.app-feature-card-shell--interactive:hover {
+  box-shadow: var(--app-card-shadow-hover);
+}
+
+.app-feature-card-shell--interactive:active {
+  box-shadow: var(--app-card-shadow-active);
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-feature-card-shell--interactive:hover {
+    transform: translateY(-0.25rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-feature-card-shell--interactive:hover {
+    transform: none;
+  }
+}
+
+.app-feature-card-pattern {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 0;
+  height: 7rem;
+  background-image: var(--app-asset-card-pattern);
+  background-position: center top;
+  background-size: min(100%, 28rem) auto;
+  background-repeat: no-repeat;
+  -webkit-mask-image: var(--app-card-pattern-mask);
+  mask-image: var(--app-card-pattern-mask);
+}
+
+@media (min-width: 640px) {
+  .app-feature-card-pattern {
+    height: 9rem;
+  }
+}
+
+.app-feature-card-shine-wrap {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 11;
+  overflow: hidden;
+  border-radius: var(--app-card-radius);
+  opacity: 0;
+  mix-blend-mode: overlay;
+  transition: opacity 280ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-feature-card-shine-wrap {
+    transition: none;
+  }
+}
+
+.app-feature-card-shell--interactive:hover .app-feature-card-shine-wrap {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-feature-card-shell--interactive:hover .app-feature-card-shine-wrap {
+    opacity: 0;
+  }
+}
+
+.app-feature-card-shine-stripe {
+  position: absolute;
+  left: -40%;
+  top: -20%;
+  height: 140%;
+  width: 75%;
+  transform: translateX(0) rotate(-14deg);
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 42%,
+    rgba(255, 255, 255, 0.92) 50%,
+    rgba(255, 255, 255, 0.2) 58%,
+    transparent 100%
+  );
+}
+
+/* Soru oluştur — mod kartı üst şerit */
+.app-question-mode-card-pattern {
+  background-image: var(--app-asset-card-pattern);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Global route loading — küre + hafif zemin */
+.app-global-loading {
+  position: relative;
+  isolation: isolate;
+  background: radial-gradient(
+    55% 45% at 50% 38%,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(244, 247, 251, 0.55) 42%,
+    transparent 72%
+  );
+}
+
+.app-global-loading__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.app-global-loading__floor {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  height: min(9rem, 28vw);
+  opacity: 0.45;
+  background: linear-gradient(
+      to top,
+      rgba(148, 163, 184, 0.22) 0%,
+      rgba(148, 163, 184, 0.06) 45%,
+      transparent 100%
+    ),
+    repeating-linear-gradient(
+      105deg,
+      rgba(148, 163, 184, 0.12) 0 1px,
+      transparent 1px 14px
+    );
+  background-size:
+    100% 100%,
+    120% 100%;
+  background-position:
+    center bottom,
+    50% 100%;
+  transform: perspective(420px) rotateX(58deg);
+  transform-origin: center bottom;
+  mask-image: linear-gradient(to top, #000 0%, transparent 92%);
+}

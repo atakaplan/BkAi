@@ -1,0 +1,11 @@
+import { lazy } from 'react'
+
+export const LazyLandingPage = lazy(async () => {
+  const m = await import('../features/landing/LandingPage')
+  return { default: m.LandingPage }
+})
+
+export const LazyQuestionCreatePage = lazy(async () => {
+  const m = await import('../features/question-create/QuestionCreatePage')
+  return { default: m.QuestionCreatePage }
+})
