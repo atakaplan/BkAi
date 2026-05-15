@@ -9,3 +9,8 @@ export const LazyQuestionCreatePage = lazy(async () => {
   const m = await import('../features/question-create/QuestionCreatePage')
   return { default: m.QuestionCreatePage }
 })
+
+export const LazyNotFoundPage = lazy(async () => {
+  const m = await import('../features/not-found/NotFoundPage')
+  return { default: m.NotFoundPage }
+})

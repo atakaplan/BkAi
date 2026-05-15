@@ -9,6 +9,12 @@ export const appCopy = {
     'BkAi ile soru oluşturun, ders planı hazırlayın, ödev ve etüt gönderin, öğrenci performansını analiz edin hepsi tek platformda.',
   introVideo: 'BkAi Tanıtım Videosu',
   comingSoon: 'Yakında',
+  notFound: {
+    code: '404',
+    title: 'Sayfa bulunamadı',
+    description: 'Aradığınız sayfa taşınmış, silinmiş veya hiç var olmamış olabilir.',
+    backHome: 'Ana sayfaya dön',
+  },
   features: {
     soruOlustur: {
       title: 'Soru Oluştur',
