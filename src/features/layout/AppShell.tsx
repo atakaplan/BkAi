@@ -1,7 +1,7 @@
-import { Suspense } from 'react'
-import { Outlet } from 'react-router-dom'
-import { AppGlobalLoading } from '../components/AppGlobalLoading'
-import { AppHeader } from './AppHeader'
+import { Suspense } from "react";
+import { Outlet } from "react-router-dom";
+import { AppGlobalLoading } from "../components/AppGlobalLoading";
+import { AppHeader } from "./AppHeader";
 
 export function AppShell() {
   return (
@@ -19,5 +19,5 @@ export function AppShell() {
         </div>
       </main>
     </div>
-  )
+  );
 }

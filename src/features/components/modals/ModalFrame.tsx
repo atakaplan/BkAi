@@ -1,62 +1,62 @@
-import { useEffect, useRef, type ReactNode } from 'react'
-import { createPortal } from 'react-dom'
-import { Icon } from '@iconify/react'
+import { useEffect, useRef, type ReactNode } from "react";
+import { createPortal } from "react-dom";
+import { Icon } from "@iconify/react";
 
 export type ModalFrameProps = {
-  open: boolean
-  onClose: () => void
+  open: boolean;
+  onClose: () => void;
   /** İçerik paneli — `role="dialog"` burada */
-  children: ReactNode
+  children: ReactNode;
   /** Tailwind max-width sınıfı, örn. `max-w-md` */
-  panelClassName?: string
+  panelClassName?: string;
   /** `aria-labelledby` — panel içindeki görünür başlık öğesiyle aynı `id` */
-  titleId: string
+  titleId: string;
   /** Backdrop tıklanınca kapanma */
-  closeOnBackdrop?: boolean
-}
+  closeOnBackdrop?: boolean;
+};
 
 export function ModalFrame({
   open,
   onClose,
   children,
-  panelClassName = 'max-w-md',
+  panelClassName = "max-w-md",
   titleId,
   closeOnBackdrop = true,
 }: ModalFrameProps) {
-  const panelRef = useRef<HTMLDivElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!open) return
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    if (!open) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = prevOverflow
-    }
-  }, [open])
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [open]);
 
   useEffect(() => {
-    if (!open) return
+    if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [open, onClose])
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open, onClose]);
 
   useEffect(() => {
-    if (!open) return
+    if (!open) return;
     const t = window.setTimeout(() => {
-      const root = panelRef.current
-      if (!root) return
+      const root = panelRef.current;
+      if (!root) return;
       const focusable = root.querySelector<HTMLElement>(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-      )
-      focusable?.focus()
-    }, 0)
-    return () => clearTimeout(t)
-  }, [open])
+      );
+      focusable?.focus();
+    }, 0);
+    return () => clearTimeout(t);
+  }, [open]);
 
-  if (!open) return null
+  if (!open) return null;
 
   const node = (
     <div
@@ -68,7 +68,7 @@ export function ModalFrame({
         className="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px] transition-opacity"
         aria-label="Pencereyi kapat"
         onClick={() => {
-          if (closeOnBackdrop) onClose()
+          if (closeOnBackdrop) onClose();
         }}
       />
       <div
@@ -90,7 +90,7 @@ export function ModalFrame({
         {children}
       </div>
     </div>
-  )
+  );
 
-  return createPortal(node, document.body)
+  return createPortal(node, document.body);
 }

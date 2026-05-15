@@ -1,22 +1,22 @@
-import { appCopy } from '../../../content/appCopy'
+import { appCopy } from "../../../content/appCopy";
 
-export type QuestionCreateSubTabId = 'create' | 'list' | 'draft2' | 'draft4'
+export type QuestionCreateSubTabId = "create" | "list" | "draft2" | "draft4";
 
 type Props = {
-  active: QuestionCreateSubTabId
-  onChange: (tab: QuestionCreateSubTabId) => void
-}
+  active: QuestionCreateSubTabId;
+  onChange: (tab: QuestionCreateSubTabId) => void;
+};
 
-const ORDER: QuestionCreateSubTabId[] = ['create', 'list', 'draft2', 'draft4']
+const ORDER: QuestionCreateSubTabId[] = ["create", "list", "draft2", "draft4"];
 
 export function QuestionCreateSubTabs({ active, onChange }: Props) {
-  const m = appCopy.questionCreate.tabs
+  const m = appCopy.questionCreate.tabs;
   const labels: Record<QuestionCreateSubTabId, string> = {
     create: m.create,
     list: m.list,
     draft2: m.draft2,
     draft4: m.draft4,
-  }
+  };
 
   return (
     <div
@@ -25,9 +25,9 @@ export function QuestionCreateSubTabs({ active, onChange }: Props) {
       aria-label="Alt menü"
     >
       {ORDER.map((id, index) => {
-        const enabled = id === 'create' || id === 'list'
-        const isOn = active === id
-        const showSep = index > 0
+        const enabled = id === "create" || id === "list";
+        const isOn = active === id;
+        const showSep = index > 0;
 
         return (
           <div key={id} className="flex shrink-0 items-end">
@@ -48,17 +48,17 @@ export function QuestionCreateSubTabs({ active, onChange }: Props) {
               title={!enabled ? appCopy.comingSoon : undefined}
               className={
                 !enabled
-                  ? 'relative z-1 -mb-px shrink-0 cursor-not-allowed px-3 py-2 text-left text-xs font-medium text-zinc-400 sm:px-4 sm:py-2.5 sm:text-sm'
+                  ? "relative z-1 -mb-px shrink-0 cursor-not-allowed px-3 py-2 text-left text-xs font-medium text-zinc-400 sm:px-4 sm:py-2.5 sm:text-sm"
                   : isOn
-                    ? 'qc-folder-tab qc-folder-tab--sm -mb-px shrink-0 px-3 py-2 text-left text-xs font-bold text-zinc-900 shadow-[0_1px_3px_rgba(15,23,42,0.06)] sm:px-4 sm:py-2.5 sm:text-sm'
-                    : 'relative z-1 -mb-px shrink-0 px-3 py-2 text-left text-xs font-medium text-zinc-500 transition hover:text-zinc-800 sm:px-4 sm:py-2.5 sm:text-sm cursor-pointer'
+                    ? "qc-folder-tab qc-folder-tab--sm -mb-px shrink-0 px-3 py-2 text-left text-xs font-bold text-zinc-900 shadow-[0_1px_3px_rgba(15,23,42,0.06)] sm:px-4 sm:py-2.5 sm:text-sm"
+                    : "relative z-1 -mb-px shrink-0 px-3 py-2 text-left text-xs font-medium text-zinc-500 transition hover:text-zinc-800 sm:px-4 sm:py-2.5 sm:text-sm cursor-pointer"
               }
             >
               {labels[id]}
             </button>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

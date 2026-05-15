@@ -1,11 +1,11 @@
-import type { QuestionCreationModeId } from '../../data/modes.mock'
-import type { QuestionCreateWorkspaceProps } from './questionCreateWorkspaceProps'
-import { MetodboxQuestionCreateWorkspace } from './MetodboxQuestionCreateWorkspace'
-import { ModePlaceholderWorkspace } from './ModePlaceholderWorkspace'
+import type { QuestionCreationModeId } from "../../data/modes.mock";
+import type { QuestionCreateWorkspaceProps } from "./questionCreateWorkspaceProps";
+import { MetodboxQuestionCreateWorkspace } from "./MetodboxQuestionCreateWorkspace";
+import { ModePlaceholderWorkspace } from "./ModePlaceholderWorkspace";
 
 type Props = QuestionCreateWorkspaceProps & {
-  mode: QuestionCreationModeId
-}
+  mode: QuestionCreationModeId;
+};
 
 /**
  * Sol sidebar’daki soru üretim moduna göre ana içerik.
@@ -18,27 +18,27 @@ export function QuestionCreateModeWorkspace({
   onOpenStepChange,
 }: Props) {
   switch (mode) {
-    case 'metodbox':
+    case "metodbox":
       return (
         <MetodboxQuestionCreateWorkspace
           onPrimaryActionReadyChange={onPrimaryActionReadyChange}
           openStep={openStep}
           onOpenStepChange={onOpenStepChange}
         />
-      )
-    case 'tymm':
+      );
+    case "tymm":
       return (
         <ModePlaceholderWorkspace
           modeId="tymm"
           onPrimaryActionReadyChange={onPrimaryActionReadyChange}
         />
-      )
-    case 'ai':
+      );
+    case "ai":
       return (
         <ModePlaceholderWorkspace
           modeId="ai"
           onPrimaryActionReadyChange={onPrimaryActionReadyChange}
         />
-      )
+      );
   }
 }

@@ -1,5 +1,5 @@
-import { LANDING_FEATURE_CARD_DEFS } from '../data/featureCards.mock'
-import { LandingFeatureCard } from './LandingFeatureCard'
+import { LANDING_FEATURE_CARD_DEFS } from "../data/featureCards.mock";
+import { LandingFeatureCard } from "./LandingFeatureCard";
 
 /** Kart verisi: `featureCards.mock.ts` — ileride API ile değiştirilebilir. */
 export function LandingFeatureCards() {
@@ -9,5 +9,5 @@ export function LandingFeatureCards() {
         <LandingFeatureCard key={card.id} card={card} />
       ))}
     </div>
-  )
+  );
 }

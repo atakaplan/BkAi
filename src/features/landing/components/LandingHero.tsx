@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import { appCopy } from '../../../content/appCopy'
+import { Link } from "react-router-dom";
+import { appCopy } from "../../../content/appCopy";
 
 export function LandingHero() {
   return (
@@ -25,5 +25,5 @@ export function LandingHero() {
         {appCopy.introVideo}
       </Link>
     </div>
-  )
+  );
 }

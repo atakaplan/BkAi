@@ -1,22 +1,22 @@
-import { useState } from 'react'
-import { appImages } from '@/assets/images'
-import { appCopy } from '@/content/appCopy'
+import { useState } from "react";
+import { appImages } from "@/assets/images";
+import { appCopy } from "@/content/appCopy";
 
-const t = appCopy.introVideoPage
+const t = appCopy.introVideoPage;
 
-type NavId = 'bkai' | 'auxiliary'
+type NavId = "bkai" | "auxiliary";
 
 const navBtnBase =
-  'inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c]'
+  "inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#004a7c]";
 
 function navBtnClass(selected: boolean) {
   return selected
     ? `${navBtnBase} bg-[#E8EAED] text-zinc-900 hover:bg-[#dfe1e5]`
-    : `${navBtnBase} bg-transparent text-zinc-700 hover:bg-[#F4F7FB] hover:text-zinc-900 cursor-pointer`
+    : `${navBtnBase} bg-transparent text-zinc-700 hover:bg-[#F4F7FB] hover:text-zinc-900 cursor-pointer`;
 }
 
 export function IntroVideoPageHeader() {
-  const [activeNav, setActiveNav] = useState<NavId>('bkai')
+  const [activeNav, setActiveNav] = useState<NavId>("bkai");
 
   return (
     <header className="flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-white px-4 py-1.5 shadow-sm ring-1 ring-[#E5E5E5] sm:px-5 sm:py-2">
@@ -37,21 +37,21 @@ export function IntroVideoPageHeader() {
       >
         <button
           type="button"
-          className={navBtnClass(activeNav === 'bkai')}
-          aria-pressed={activeNav === 'bkai'}
-          onClick={() => setActiveNav('bkai')}
+          className={navBtnClass(activeNav === "bkai")}
+          aria-pressed={activeNav === "bkai"}
+          onClick={() => setActiveNav("bkai")}
         >
           {t.introVideoBkaiTools}
         </button>
         <button
           type="button"
-          className={navBtnClass(activeNav === 'auxiliary')}
-          aria-pressed={activeNav === 'auxiliary'}
-          onClick={() => setActiveNav('auxiliary')}
+          className={navBtnClass(activeNav === "auxiliary")}
+          aria-pressed={activeNav === "auxiliary"}
+          onClick={() => setActiveNav("auxiliary")}
         >
           {t.introVideoAuxiliaryTools}
         </button>
       </nav>
     </header>
-  )
+  );
 }

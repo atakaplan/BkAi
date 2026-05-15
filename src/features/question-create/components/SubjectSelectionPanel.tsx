@@ -1,23 +1,23 @@
-import { appCopy } from '../../../content/appCopy'
+import { appCopy } from "../../../content/appCopy";
 import {
   SUBJECT_SELECTION_OPTIONS,
   type SubjectFieldKey,
-} from '../data/subjectSelection.mock'
+} from "../data/subjectSelection.mock";
 
 type Props = {
-  value: Record<SubjectFieldKey, string>
-  onChange: (key: SubjectFieldKey, value: string) => void
-}
+  value: Record<SubjectFieldKey, string>;
+  onChange: (key: SubjectFieldKey, value: string) => void;
+};
 
 export function SubjectSelectionPanel({ value, onChange }: Props) {
-  const f = appCopy.questionCreate.fields
-  const ph = appCopy.questionCreate.selectPlaceholder
+  const f = appCopy.questionCreate.fields;
+  const ph = appCopy.questionCreate.selectPlaceholder;
   const fields: { key: SubjectFieldKey; label: string }[] = [
-    { key: 'level', label: f.level },
-    { key: 'lesson', label: f.lesson },
-    { key: 'unit', label: f.unit },
-    { key: 'topic', label: f.topic },
-  ]
+    { key: "level", label: f.level },
+    { key: "lesson", label: f.lesson },
+    { key: "unit", label: f.unit },
+    { key: "topic", label: f.topic },
+  ];
 
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -40,7 +40,13 @@ export function SubjectSelectionPanel({ value, onChange }: Props) {
               ))}
             </select>
             <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden
+              >
                 <path
                   d="M6 9L12 15L18 9"
                   stroke="currentColor"
@@ -53,5 +59,5 @@ export function SubjectSelectionPanel({ value, onChange }: Props) {
         </label>
       ))}
     </div>
-  )
+  );
 }

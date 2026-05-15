@@ -1,11 +1,14 @@
-import { appCopy } from '../../../content/appCopy'
+import { appCopy } from "../../../content/appCopy";
 
 type Props = {
-  disabled?: boolean
-  onContinue?: () => void
-}
+  disabled?: boolean;
+  onContinue?: () => void;
+};
 
-export function QuestionCreateFooterActions({ disabled = false, onContinue }: Props) {
+export function QuestionCreateFooterActions({
+  disabled = false,
+  onContinue,
+}: Props) {
   return (
     <div className="flex justify-end">
       <button
@@ -18,5 +21,5 @@ export function QuestionCreateFooterActions({ disabled = false, onContinue }: Pr
         <span aria-hidden>→</span>
       </button>
     </div>
-  )
+  );
 }

@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-import { appImages } from '@/assets/images'
-import { appCopy } from '../../content/appCopy'
+import { Link } from "react-router-dom";
+import { appImages } from "@/assets/images";
+import { appCopy } from "../../content/appCopy";
 
 export function AppHeader() {
   return (
@@ -31,5 +31,5 @@ export function AppHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }

@@ -1,14 +1,14 @@
-import { Icon } from '@iconify/react'
-import { Link } from 'react-router-dom'
-import type { LandingFeatureCardDef } from '../data/featureCards.mock'
-import { appCopy } from '../../../content/appCopy'
+import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
+import type { LandingFeatureCardDef } from "../data/featureCards.mock";
+import { appCopy } from "../../../content/appCopy";
 
 type Props = {
-  card: LandingFeatureCardDef
-}
+  card: LandingFeatureCardDef;
+};
 
 export function LandingFeatureCard({ card }: Props) {
-  const copy = appCopy.features[card.id]
+  const copy = appCopy.features[card.id];
 
   const body = (
     <>
@@ -18,11 +18,15 @@ export function LandingFeatureCard({ card }: Props) {
         <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gray-100/95 text-[#6B7280] shadow-sm ring-1 ring-black/10 backdrop-blur-[1px]">
           <Icon icon={card.icon} className="text-[26px]" aria-hidden />
         </span>
-        <h3 className="text-base font-semibold leading-snug text-black sm:text-lg">{copy.title}</h3>
-        <p className="max-w-xs text-sm leading-relaxed text-[#6B7280]">{copy.description}</p>
+        <h3 className="text-base font-semibold leading-snug text-black sm:text-lg">
+          {copy.title}
+        </h3>
+        <p className="max-w-xs text-sm leading-relaxed text-[#6B7280]">
+          {copy.description}
+        </p>
       </div>
     </>
-  )
+  );
 
   if (card.enabled && card.href) {
     return (
@@ -35,7 +39,7 @@ export function LandingFeatureCard({ card }: Props) {
           <span className="app-feature-card-shine-stripe" />
         </span>
       </Link>
-    )
+    );
   }
 
   return (
@@ -46,5 +50,5 @@ export function LandingFeatureCard({ card }: Props) {
     >
       {body}
     </div>
-  )
+  );
 }

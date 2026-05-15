@@ -1,5 +1,5 @@
-import { QuestionStepsSection } from '../QuestionStepsSection'
-import type { QuestionCreateWorkspaceProps } from './questionCreateWorkspaceProps'
+import { QuestionStepsSection } from "../QuestionStepsSection";
+import type { QuestionCreateWorkspaceProps } from "./questionCreateWorkspaceProps";
 
 export function MetodboxQuestionCreateWorkspace({
   onPrimaryActionReadyChange,
@@ -12,5 +12,5 @@ export function MetodboxQuestionCreateWorkspace({
       openStep={openStep}
       onOpenStepChange={onOpenStepChange}
     />
-  )
+  );
 }

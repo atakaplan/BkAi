@@ -17,7 +17,7 @@ export function QuestionCreateMainNav({ activeId }: Props) {
     <div className="qc-nav-track flex min-w-0 items-end gap-2 border-b border-[#E5E5E5] px-2 pb-0 pl-4 pt-2 sm:gap-3 sm:px-3 sm:pl-5 sm:pt-2.5">
       <Link
         to="/bkai"
-        className="mb-px flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-zinc-800 transition hover:-translate-x-1 hover:bg-zinc-100/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 sm:h-11 sm:w-11"
+        className="mb-px flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-zinc-800 transition hover:-translate-x-1 hover:bg-white/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 sm:h-11 sm:w-11"
         aria-label="Geri"
       >
         <BackButtonIcon />

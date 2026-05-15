@@ -1,23 +1,23 @@
-import { Icon } from '@iconify/react'
-import { type ReactNode } from 'react'
+import { Icon } from "@iconify/react";
+import { type ReactNode } from "react";
 
 export type QuestionStepAccordionProps = {
-  stepNumber: number
-  stepBadge: string
-  title: string
-  subtitle?: string
-  isOpen: boolean
-  completed: boolean
+  stepNumber: number;
+  stepBadge: string;
+  title: string;
+  subtitle?: string;
+  isOpen: boolean;
+  completed: boolean;
   /** Önceki adım bitmeden bu adım açılamaz */
-  locked: boolean
-  onToggle: () => void
-  completedLabel: string
+  locked: boolean;
+  onToggle: () => void;
+  completedLabel: string;
   /** Tamamlanıp kapalıyken başlık satırında gösterilecek özet etiketleri */
-  summaryChips?: string[]
-  headerAction?: ReactNode
-  children?: ReactNode
-  footer?: ReactNode
-}
+  summaryChips?: string[];
+  headerAction?: ReactNode;
+  children?: ReactNode;
+  footer?: ReactNode;
+};
 
 export function QuestionStepAccordion({
   stepNumber,
@@ -34,15 +34,17 @@ export function QuestionStepAccordion({
   children,
   footer,
 }: QuestionStepAccordionProps) {
-  const collapseBlocked = locked && !completed
-  const titleMuted = !isOpen && !completed && stepNumber > 1
-  const showCompletedSummaryBar = Boolean(completed && !isOpen && summaryChips !== undefined)
+  const collapseBlocked = locked && !completed;
+  const titleMuted = !isOpen && !completed && stepNumber > 1;
+  const showCompletedSummaryBar = Boolean(
+    completed && !isOpen && summaryChips !== undefined,
+  );
 
   return (
     <div
       className={`overflow-hidden rounded-xl border border-[#E5E5E5] shadow-sm ${
-        showCompletedSummaryBar ? 'bg-[#F4F7FB]' : 'bg-white'
-      } ${collapseBlocked ? 'opacity-75' : ''}`}
+        showCompletedSummaryBar ? "bg-[#F4F7FB]" : "bg-white"
+      } ${collapseBlocked ? "opacity-75" : ""}`}
     >
       {showCompletedSummaryBar ? (
         <div className="flex flex-wrap items-center gap-2 gap-y-2 px-3 py-3 sm:px-4 sm:py-3.5">
@@ -56,7 +58,9 @@ export function QuestionStepAccordion({
             <span className="shrink-0 rounded-lg bg-sky-200/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-sky-950 sm:text-xs">
               {stepBadge}
             </span>
-            <span className="shrink-0 text-sm font-semibold text-slate-900 sm:text-base">{title}</span>
+            <span className="shrink-0 text-sm font-semibold text-slate-900 sm:text-base">
+              {title}
+            </span>
             {summaryChips?.map((chip, i) => (
               <span
                 key={`${i}-${chip}`}
@@ -68,7 +72,11 @@ export function QuestionStepAccordion({
           </button>
           <div className="ml-auto flex shrink-0 items-center gap-3 sm:gap-4">
             <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-800">
-              <Icon icon="mdi:check-circle-outline" className="text-lg shrink-0" aria-hidden />
+              <Icon
+                icon="mdi:check-circle-outline"
+                className="text-lg shrink-0"
+                aria-hidden
+              />
               {completedLabel}
             </span>
             <button
@@ -76,7 +84,7 @@ export function QuestionStepAccordion({
               disabled={collapseBlocked}
               className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition hover:bg-white/60 disabled:cursor-not-allowed disabled:opacity-50"
               onClick={onToggle}
-              aria-label={isOpen ? 'Adımı kapat' : 'Adımı aç'}
+              aria-label={isOpen ? "Adımı kapat" : "Adımı aç"}
             >
               <svg
                 width="18"
@@ -112,7 +120,7 @@ export function QuestionStepAccordion({
             <span className="min-w-0 flex-1">
               <span className="flex flex-wrap items-center gap-2">
                 <span
-                  className={`text-sm font-semibold sm:text-base ${titleMuted ? 'text-slate-500' : 'text-slate-900'}`}
+                  className={`text-sm font-semibold sm:text-base ${titleMuted ? "text-slate-500" : "text-slate-900"}`}
                 >
                   {title}
                 </span>
@@ -130,7 +138,10 @@ export function QuestionStepAccordion({
             </span>
           </button>
           {isOpen && headerAction ? (
-            <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+            <div
+              className="flex items-center gap-2"
+              onClick={(e) => e.stopPropagation()}
+            >
               {headerAction}
             </div>
           ) : null}
@@ -139,14 +150,14 @@ export function QuestionStepAccordion({
             disabled={collapseBlocked}
             className="ml-auto cursor-pointer flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-transparent text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
             onClick={onToggle}
-            aria-label={isOpen ? 'Adımı kapat' : 'Adımı aç'}
+            aria-label={isOpen ? "Adımı kapat" : "Adımı aç"}
           >
             <svg
               width="18"
               height="18"
               viewBox="0 0 24 24"
               fill="none"
-              className={`transition ${isOpen ? 'rotate-180' : ''}`}
+              className={`transition ${isOpen ? "rotate-180" : ""}`}
               aria-hidden
             >
               <path
@@ -162,12 +173,16 @@ export function QuestionStepAccordion({
       )}
       {isOpen && children ? (
         <>
-          <div className="border-t border-[#E5E5E5] bg-[#F4F7FB] px-3 py-4 sm:px-4">{children}</div>
+          <div className="border-t border-[#E5E5E5] bg-[#F4F7FB] px-3 py-4 sm:px-4">
+            {children}
+          </div>
           {footer ? (
-            <div className="bg-[#F4F7FB] px-3 py-3 sm:px-4 sm:py-4">{footer}</div>
+            <div className="bg-[#F4F7FB] px-3 py-3 sm:px-4 sm:py-4">
+              {footer}
+            </div>
           ) : null}
         </>
       ) : null}
     </div>
-  )
+  );
 }
