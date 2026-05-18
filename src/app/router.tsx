@@ -5,6 +5,7 @@ import {
   LazyLandingPage,
   LazyNotFoundPage,
   LazyQuestionCreatePage,
+  LazyQuestionPreviewPage,
 } from "./lazyRoutePages";
 
 /** Vite `base` ile uyumlu (`/BkAi` prod, dev’de yok). */
@@ -25,6 +26,7 @@ export const appRouter = createBrowserRouter(
             { index: true, element: <LazyLandingPage /> },
             { path: "tanitim-videosu", element: <LazyIntroVideoPage /> },
             { path: "soru-olustur", element: <LazyQuestionCreatePage /> },
+            { path: "soru-onizle", element: <LazyQuestionPreviewPage /> },
             { path: "*", element: <LazyNotFoundPage /> },
           ],
         },

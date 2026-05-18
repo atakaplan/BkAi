@@ -10,6 +10,11 @@ export const LazyQuestionCreatePage = lazy(async () => {
   return { default: m.QuestionCreatePage };
 });
 
+export const LazyQuestionPreviewPage = lazy(async () => {
+  const m = await import('../features/question-preview/QuestionPreviewPage')
+  return { default: m.QuestionPreviewPage }
+})
+
 export const LazyIntroVideoPage = lazy(async () => {
   const m = await import("../features/intro-video/IntroVideoPage");
   return { default: m.IntroVideoPage };

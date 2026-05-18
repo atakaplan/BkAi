@@ -11,7 +11,12 @@ import { QuestionModeSidebar } from "./components/QuestionModeSidebar";
 import { QuestionCreateModeWorkspace } from "./components/workspaces/QuestionCreateModeWorkspace";
 import { QuestionCreateFooterActions } from "./components/QuestionCreateFooterActions";
 import { QuestionListPanel } from "./components/QuestionListPanel";
-import { clearQuestionCreateDraft } from "./persistence/questionCreateDraft";
+import { buildQuestionPreviewFromDraft } from "../question-preview/utils/buildQuestionPreviewFromDraft";
+import { saveQuestionPreviewSession } from "../question-preview/persistence/questionPreviewSession";
+import {
+  clearQuestionCreateDraft,
+  loadQuestionCreateDraft,
+} from "./persistence/questionCreateDraft";
 import {
   applyQuestionCreateUrlPatch,
   parseMode,
@@ -89,11 +94,16 @@ export function QuestionCreatePage() {
 
   const handleContinue = () => {
     if (postCreateLoading) return;
+    const draft = loadQuestionCreateDraft(mode);
+    const preview = buildQuestionPreviewFromDraft(draft, mode);
+    if (!preview) return;
+
+    saveQuestionPreviewSession(preview);
     setPostCreateLoading(true);
-    clearQuestionCreateDraft(mode);
     postCreateTimerRef.current = setTimeout(() => {
       postCreateTimerRef.current = null;
-      navigate("/bkai", { replace: true });
+      clearQuestionCreateDraft(mode);
+      navigate("/bkai/soru-onizle", { replace: true });
     }, POST_CREATE_NAV_DELAY_MS);
   };
 
